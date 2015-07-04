@@ -13,3 +13,4 @@ con.commit()
 x.execute("""SELECT * FROM alunos;""")
 print x.fetchall()
 con.close()
+#teste
