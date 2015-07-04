@@ -5,3 +5,4 @@ Stacey 7.81
 Aideen 8.05
 Zack 7.21
 Aaron 8.30
+Sergio 7.0
