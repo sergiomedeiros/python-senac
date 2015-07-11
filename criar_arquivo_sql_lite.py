@@ -1,14 +1,18 @@
 
 import sqlite3
 db = sqlite3.connect("senac.db")
-
-
-
 cursor = db.cursor()
-
-cursor.execute("""SELECT count(*) FROM conjugar;""")
-print(cursor.fetchone())
+#cursor.execute("""CREATE TABLE verbo_conjugar (id integer primary key autoincrement,verbo varchar(40) not null,qt_vezes numeric(3) not null )""")
+#cursor.execute("""CREATE TABLE usuario (id integer primary key autoincrement,nome varchar(40) not null )""")
+sql = "INSERT INTO verbo_conjugar (verbo, qt_vezes) VALUES ('LER', 1)"
+cursor.execute(sql)
 db.close()
+
+#cursor = db.cursor()
+
+#cursor.execute("""SELECT count(*) FROM conjugar;""")
+#print(cursor.fetchone())
+#db.close()
 
 
 #cursor.execute("""CREATE TABLE conjugar (id integer primary key autoincrement,nome varchar(100) not null,verbo varchar(40) not null,qt_vezes numeric(3) not null )""")
