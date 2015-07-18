@@ -1,4 +1,4 @@
-# Realiza a importaçao da class Pessoa
+# Realiza a importaçao da class Pessoa    
 # Apos o from, informar o nome do arquivo.py, e se necessario o caminho absoluto
 # Apos o import o nome da class
 from class_pessoa import Pessoa

@@ -1,4 +1,4 @@
-from class_pessoa import Pessoa
+from class_pessoa import Pessoa  
 
 class Vovo(Pessoa):
 

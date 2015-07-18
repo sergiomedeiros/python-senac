@@ -1,4 +1,4 @@
-class Pessoa(object):
+class Pessoa(object):  
 
     def __init__(self,nome,mae):
         self.nome = nome
