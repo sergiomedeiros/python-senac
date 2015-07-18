@@ -6,7 +6,7 @@ aleatoriamente dentro de uma lista contendo vários nomes;
 """
 
 import random
-nome=["sergio","anne","bel","pedro","andre"]
+nome=["sergio","anne","bel","pedro","andre"] 
 
 i = 0
 while i < 4:
