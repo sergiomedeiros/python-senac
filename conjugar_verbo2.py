@@ -43,55 +43,57 @@ while novo_verbo != False:
     else:
         print("Tem certeza que " +verbo.upper()+ " é um verbo regular?")
 
-    #sql = "SELECT count(*) FROM verbo_conjugar where verbo = '%s' " % verbo
-    sql = "SELECT count(*) FROM verbo_conjugar"
-    print(sql)
+    sql = "SELECT qt_vezes FROM verbo_conjugar where verbo = '%s' " % verbo
     cursor.execute(sql)
-    cursor.execute("""SELECT * FROM verbo_conjugar;""")
-    for linha in cursor.fetchall():
-        print (linha[0],' - ', linha[1],'\n') # valor da primeira coluna
 
-        
-    print(cursor.fetchall())
-    cursor.execute(sql)
-    qtdconjuga = cursor.rowcount
-    print('Conta ',qtdconjuga)
-    
-    """
-    qtdconjuga = cursor.execute(sql)
-    print(qtdconjuga)
-    sql = "INSERT INTO verbo_conjugar (verbo, qt_vezes) VALUES ('%s', %d)" % (verbo,qtdconjuga)
-    try:
-        #execute the sql command
-        cursor.execute(sql)
-        #commit your changes to the db
-        db.commit()
-    except:
-        #rollback on error
-        db.rollback()
-
-    sql = "SELECT count(*) FROM usuario where nome = '%s' " %usuario
-    qtdusuario = cursor.execute(sql)
-    if qtdusuario == 0:
-        sql = "INSERT INTO usuario (nome) VALUES ('%s'" % usuario
+    if cursor.fetchone() is not None:
+        sql = "UPDATE verbo_conjugar SET qt_vezes = qt_vezes+1 where verbo = '%s' " % (verbo)
         try:
             #execute the sql command
             cursor.execute(sql)
             #commit your changes to the db
             db.commit()
-        except:
+        except Exception as e:
             #rollback on error
+            print("Exception: ",e)
             db.rollback()
-       """ 
+    else:
+        sql = "INSERT INTO verbo_conjugar (verbo, qt_vezes) VALUES ('%s', 1)" % (verbo)
+        try:
+            #execute the sql command
+            cursor.execute(sql)
+            #commit your changes to the db
+            db.commit()
+        except Exception as e:
+            #rollback on error
+            print("Exception: ",e)
+            db.rollback()
+
+    print(usuario)
+    sql = "SELECT * FROM usuario where nome = '%s' " %usuario
+    cursor.execute(sql)
+    if cursor.fetchone() is None:
+        sql = "INSERT INTO usuario (nome) VALUES ('%s')" % usuario
+        try:
+            #execute the sql command
+            cursor.execute(sql)
+            #commit your changes to the db
+            db.commit()
+        except Exception as e:
+            #rollback on error
+            print("Exception: ",e)
+            db.rollback()
+       
    
     novo_verbo = int(input("Conjungar outro verbo ? 1 - Sim ou 0 - Não: "))
 
 
-
-
 cursor.execute("""SELECT * FROM verbo_conjugar;""")
 for linha in cursor.fetchall():
-    print (linha[0],' - ', linha[1],'\n') # valor da primeira coluna
+    print (linha[0],' - ', linha[1],' - ', linha[2],'\n') # valor da primeira coluna
 
+cursor.execute("""SELECT * FROM usuario;""")
+for linha in cursor.fetchall():
+    print (linha[0],' - ',linha[1],'\n') # valor da primeira coluna
 
 db.close()
