@@ -1,5 +1,5 @@
 
-#Primeiro criamos listas com as terminações de verbos regulares
+#Primeiro criamos listas com as terminações de verbos regulares 
 
 
 # criar funcao de conexao
