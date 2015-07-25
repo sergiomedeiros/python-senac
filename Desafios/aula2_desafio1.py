@@ -1,11 +1,5 @@
-
 #Primeiro criamos listas com as terminações de verbos regulares 
-
-
 # criar funcao de conexao
-
-    
-    
 
 import sqlite3
 db = sqlite3.connect("senac.db")
