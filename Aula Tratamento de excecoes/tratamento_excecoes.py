@@ -4,3 +4,4 @@ for linha in dialogo:
     print(linha,end='')   #end='' para evitar a quebra de linha
 
 dialogo.close()
+   
